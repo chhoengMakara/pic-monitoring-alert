@@ -32,11 +32,11 @@ require_once 'crud/mysql.php';
         // $msgSyncData = $serverRemark;
         $showEmj = $row[0]["number_of_active_account"] > 0 ? $emjNormal : $emjDanger;
         $msgSyncData = $showEmj."Sync Date ON : ".date('Y-m-d').' '.$dateTime;
-        $msgSyncData .= $showEmj."\n Reporting Date : ".$reportDate;
-        $msgSyncData .= "\n\t\t\t Acc :  ".$row[0]["number_of_active_account"];
-        $msgSyncData .= "\n\t\t\t Balance  :  $".number_format($row[0]["current_balance"]);
-        $msgSyncData .= "\n\t\t\t Daily Disb Acc :  ".$row[0]["daily_disb_acc"]; 
-        $msgSyncData .= "\n\t\t\t Daily Disb Amt :  $" .number_format($row[0]["daily_disb_amt"]);
+        $msgSyncData .= "\n".$showEmj."Reporting Date : ".$reportDate."";
+        $msgSyncData .= "\n\t\t\t\t\t Acc :  ".$row[0]["number_of_active_account"];
+        $msgSyncData .= "\n\t\t\t\t\t Balance  :  $".number_format($row[0]["current_balance"]);
+        $msgSyncData .= "\n\t\t\t\t\t Daily Disb Acc :  ".$row[0]["daily_disb_acc"]; 
+        $msgSyncData .= "\n\t\t\t\t\t Daily Disb Amt :  $" .number_format($row[0]["daily_disb_amt"]);
         // $msgSyncData .= "\n \t Report Date: ".$row[0]["report_date"];
         alertMessageOnTelegram($msgSyncData."\n--");
     }
