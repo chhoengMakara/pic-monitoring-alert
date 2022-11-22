@@ -4,11 +4,12 @@ require_once 'crud/mysql.php';
      * Description  : check used storage for alerting message on telegram
      * @Author      : Seng Sopheak
      * @Date        : 01-April-2021
+     
      */
     function alertMessageOnTelegram($message)
     {     	
         $url = "https://api.telegram.org/bot5483593804:AAGiA_QmBCxGYwOmJrRdkuLMkPLG7GOYYKE/sendMessage";
-        $payload = json_encode(array("chat_id" => "@hengheng007", "text" => $message)); 
+        $payload = json_encode(array("chat_id" => "-1001665842323", "text" => $message)); 
         // $url = "https://api.telegram.org/bot1854850722:AAG37aHzspDo5u2t_qh6ttcbtGMm8-OO3WM/sendMessage";
         // $payload = json_encode(array("chat_id" => "@cbs_alert20_demo", "text" => $message));
         $curl = curl_init();
@@ -85,17 +86,18 @@ FROM cbs_report.pic_daily_loan_list
    
         if ($currentTime >= strtotime('00:01:00') && $currentTime < strtotime('12:00:00'))
         {
+        	
             $dataTime = '07:30:00';
             getAlertData($row,$reportDate,$dataTime,$serverRemark,$emjNormal,$emjDanger);
            
         } else
         {
-            if(in_array(date("Hi",$currentTime),$scheduleTimeSyncPIC)){
+          // if(in_array(date("Hi",$currentTime),$scheduleTimeSyncPIC)){
                 $dataTime = date("H:i:s",$currentTime);
                 getAlertData($row,$reportDate,$dataTime,$serverRemark,$emjNormal,$emjDanger);
                 // $msgSyncData = $msgSyncData." success at ".date('Y-m-d').' '.date("H:i:s",$currentTime);
                 // alertMessageOnTelegram($msgSyncData."\n--");
-            }
+         //   }
             
         }
         
